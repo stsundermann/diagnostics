@@ -36,15 +36,3 @@ rosbuild_add_executable(aggregator_node src/aggregator_node.cpp)
 target_link_libraries(aggregator_node diagnostic_aggregator)
 
 rosbuild_add_rostest(test/launch/test_agg.launch)
-
-# Analyzer loader allows other users to test that Analyzers load
-rosbuild_add_executable(analyzer_loader test/analyzer_loader.cpp)
-target_link_libraries(analyzer_loader diagnostic_aggregator)
-rosbuild_add_gtest_build_flags(analyzer_loader)
-set_target_properties(analyzer_loader PROPERTIES EXCLUDE_FROM_ALL FALSE)
-
-
-# Test Analyzer loader
-rosbuild_add_rostest(test/launch/test_loader.launch)
-rosbuild_add_rostest(test/launch/test_expected_stale.launch)
-rosbuild_add_rostest(test/launch/test_multiple_match.launch)
